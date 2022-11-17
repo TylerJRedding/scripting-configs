@@ -13,6 +13,9 @@ class Service:
         self.environmentType = Constants.EnvironmentType.NA
         self.repo = "not-assigned"
         self.filePath = "not-assigned"
+        # Two list that can be utilized to hold errors and warnings
+        self.errorList = []
+        self.warningList = []
 
     def setServiceName(self, serviceName):
         self.serviceName = serviceName
@@ -36,6 +39,17 @@ class Service:
 
     def getPropertiesDict(self):
         return self.propertiesDict
+
+    def setWarningInList(self, warning):
+        self.warningList.append(warning)
+    def getWarningList(self):
+        return self.warningList
+
+    def setErrorInList(self, error):
+        self.errorList.append(error)
+    def getErrorList(self):
+        return self.errorList
+
 
     def __str__(self):
         #serviceNameOutput = "ServiceName: " + self.serviceName.value

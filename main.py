@@ -54,6 +54,7 @@ def validateProduction(serviceList):
                 successFlag = False
                 print(remainingProp + " found in prod but not prod-AP")
             elif not prodEnvBool and prodAPEnvBool:
+
                 print(remainingProp + " found in prod but not prod-AP")
                 successFlag = False
             else:
