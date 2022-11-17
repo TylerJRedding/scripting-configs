@@ -7,6 +7,8 @@
 import Constants
 from Constants import ServiceName
 from Service import Service
+from PropertyWarning import PropertyWarning
+from PropertyError import PropertyError
 
 
 # Passed 4 Service Objects that are each holding a populated dictionary
@@ -52,13 +54,18 @@ def validateProduction(serviceList):
                 break
             elif prodEnvBool and not prodAPEnvBool:
                 successFlag = False
-                print(remainingProp + " found in prod but not prod-AP")
+                propertyError = PropertyError(remainingProp, "found in prod but not prod-AP")
+                service.setErrorInList(propertyError)
+                #print(remainingProp + " found in prod but not prod-AP")
             elif not prodEnvBool and prodAPEnvBool:
-
-                print(remainingProp + " found in prod but not prod-AP")
+                propertyError = PropertyError(remainingProp, "found in prod but not prod-AP")
+                service.setErrorInList(propertyError)
+                #print(remainingProp + " found in prod but not prod-AP")
                 successFlag = False
             else:
-                print(remainingProp + " not found in either prod or prod-ap")
+                propertyError = PropertyError(remainingProp, "not found in either prod or prod-ap")
+                service.setErrorInList(propertyError)
+                #print(remainingProp + " not found in either prod or prod-ap")
                 successFlag = False
     return successFlag
     # Output all remaining variables within a csv file
